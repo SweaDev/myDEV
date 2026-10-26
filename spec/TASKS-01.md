@@ -241,7 +241,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
     - all using dev.to CSS variables with fallbacks (SPEC §4).
   - Done when: lint and typecheck pass, and a test confirms the icons render as SVG elements.
 
-- [ ] **T-503: Feed filter** (FR-4, FR-7, SPEC §8.2–8.3)
+- [x] **T-503: Feed filter** (FR-4, FR-7, SPEC §8.2–8.3)
   - `src/features/mydev/feed-filter.ts`:
     - a first pass over existing cards,
     - one MutationObserver on the feed container watching only added nodes,
