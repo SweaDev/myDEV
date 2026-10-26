@@ -6,4 +6,8 @@ export const MARKER = {
   hidden: 'data-mydev-hidden',
   /** A native card the feed filter has already handled. */
   processed: 'data-mydev-processed',
+  /** The native feed container, hidden while the myDEV view is open. */
+  feedHidden: 'data-mydev-feed-hidden',
+  /** On <html> while the ID set loads: unprocessed cards stay invisible (SPEC §8.2). */
+  prefilter: 'data-mydev-prefilter',
 } as const;

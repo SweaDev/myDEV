@@ -232,7 +232,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
   - Tests use the chrome mock.
   - Done when: tests pass.
 
-- [ ] **T-502: Bundled icons and base CSS**
+- [x] **T-502: Bundled icons and base CSS**
   - `src/features/mydev/icons.ts`: outline and filled check SVGs built through `dom.svg`.
   - `mydev.css`:
     - `[data-mydev-hidden]{display:none!important}`,
