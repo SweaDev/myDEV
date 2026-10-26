@@ -46,7 +46,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
   - Install the dev dependencies from PLAN-01 M0 with `pnpm add -D`, and commit `pnpm-lock.yaml`.
   - Done when: `pnpm install --frozen-lockfile` succeeds.
 
-- [ ] **T-002: TypeScript configuration**
+- [x] **T-002: TypeScript configuration**
   - Add `tsconfig.json`: `strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, target ES2022, `lib` with DOM, and `types: ["chrome"]`.
   - Add a `typecheck` script (`tsc --noEmit`).
   - Add a placeholder `src/core/types.ts` so the project compiles.
