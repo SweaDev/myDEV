@@ -125,7 +125,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
   - Tests: hostile strings stay inert text; disallowed attributes (`onclick`, `style`, `srcdoc`) are refused; `href` refuses raw strings.
   - Done when: tests pass.
 
-- [ ] **T-105: Logger** (SPEC §8.1)
+- [x] **T-105: Logger** (SPEC §8.1)
   - `src/core/logger.ts`: `createLogger(scope)` with the `[mydev:<scope>]` prefix, `debug/info/warn/error`, and `warnOnce(key)`/rate limiting.
   - Done when: tests pass.
 
