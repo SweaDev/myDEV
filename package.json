@@ -36,6 +36,10 @@
     "build": "tsx scripts/build.ts",
     "build:chrome": "tsx scripts/build.ts chrome",
     "build:firefox": "tsx scripts/build.ts firefox",
-    "dev": "tsx scripts/build.ts --watch"
+    "dev": "tsx scripts/build.ts --watch",
+    "lint:firefox": "web-ext lint --source-dir dist/firefox",
+    "zip": "pnpm zip:chrome && pnpm zip:firefox",
+    "zip:chrome": "web-ext build --source-dir dist/chrome --artifacts-dir dist --filename mydev-chrome.zip --overwrite-dest",
+    "zip:firefox": "web-ext build --source-dir dist/firefox --artifacts-dir dist --filename mydev-firefox.zip --overwrite-dest"
   }
 }

@@ -81,7 +81,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
   - Add a unit test for the manifest merge function.
   - Done when: `pnpm build` produces both dist folders, each with a `manifest.json` that references only files that exist.
 
-- [ ] **T-006: Packaging and Firefox lint**
+- [x] **T-006: Packaging and Firefox lint**
   - Add the `zip` script, which writes `dist/mydev-chrome.zip` and `dist/mydev-firefox.zip`.
   - Add `lint:firefox` (`web-ext lint -s dist/firefox`).
   - Done when: `pnpm build && pnpm zip && pnpm lint:firefox` succeeds with no errors.
