@@ -144,7 +144,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
   - `src/storage/schema.ts`: key builders (`itemKey(postId)`, `ITEM_PREFIX`, `META_KEY`, `SETTINGS_KEY`), `CURRENT_SCHEMA_VERSION = 1`, `DEFAULT_SETTINGS`.
   - Done when: typecheck passes.
 
-- [ ] **T-202: Migrations runner** (SPEC §5.4)
+- [x] **T-202: Migrations runner** (SPEC §5.4)
   - `src/storage/migrations.ts`: `runMigrations()` creates `meta` (with a `crypto.randomUUID()` `installId`) and default `settings` when they are missing, then applies ordered migrations (empty for v1).
   - Tests: first run creates meta and settings; a second run is a no-op; an existing `installId` is kept.
   - Done when: tests pass.
