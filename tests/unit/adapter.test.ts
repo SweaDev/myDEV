@@ -161,3 +161,103 @@ describe('when dev.to markup does not match (FR-9)', () => {
     expect(adapter.findPostCards(bad as unknown as ParentNode)).toEqual([]);
   });
 });
+
+describe('tabs', () => {
+  it('lists the native tabs of each layout, excluding the logged-in dropdown', () => {
+    mountFixture('logged-out/tab-bar.html');
+    expect(adapter.findTabs().map((tab) => tab.getAttribute('href'))).toEqual([
+      '/',
+      '/latest',
+      '/top/week',
+    ]);
+    mountFixture('logged-in/tab-bar.html', true);
+    expect(adapter.findTabs().map((tab) => tab.getAttribute('data-feed-nav'))).toEqual([
+      'discover',
+      'following',
+      'curated',
+      'latest',
+    ]);
+    expect(adapter.findTabs().every((tab) => tab.matches('.feed-pill-nav a'))).toBe(true);
+  });
+
+  it('reads and writes the current marker', () => {
+    mountFixture('logged-in/tab-bar.html', true);
+    const [discover, following] = adapter.findTabs();
+    if (!discover || !following) throw new Error('missing tabs');
+    expect(adapter.isTabCurrent(discover)).toBe(true);
+    expect(adapter.isTabCurrent(following)).toBe(false);
+    adapter.setTabCurrent(discover, false);
+    adapter.setTabCurrent(following, true);
+    expect(adapter.isTabCurrent(discover)).toBe(false);
+    expect(adapter.isTabCurrent(following)).toBe(true);
+    expect(following.getAttribute('aria-current')).toBe('page');
+    expect(discover.hasAttribute('aria-current')).toBe(false);
+  });
+
+  it.each([
+    ['logged-out/tab-bar.html', false],
+    ['logged-in/tab-bar.html', true],
+  ])('creates a tab modelled on the last native tab (%s)', (fixture, loggedIn) => {
+    mountFixture(fixture, loggedIn);
+    const created = adapter.createTab('myDEV', '#mydev');
+    if (!created) throw new Error('no tab created');
+    const { item, link } = created;
+    expect(link.getAttribute('href')).toBe('#mydev');
+    expect(link.textContent?.replace(/\s+/g, ' ').trim()).toMatch(/^myDEV( myDEV)?$/);
+    expect(link.classList.contains('crayons-navigation__item')).toBe(true);
+    expect(link.hasAttribute('data-feed-nav')).toBe(false);
+    expect(link.hasAttribute('aria-current')).toBe(false);
+    expect(link.classList.contains('crayons-navigation__item--current')).toBe(false);
+    expect(item.querySelector('svg, img')).toBeNull();
+    expect(item.querySelectorAll('[id]')).toHaveLength(0);
+    expect(item.isConnected).toBe(false);
+    // The template keeps its own markup.
+    expect(adapter.findTabs().at(-1)?.textContent).not.toContain('myDEV');
+  });
+
+  it('gives the created tab no way to trigger dev.to tab behaviour', () => {
+    mountFixture('logged-in/tab-bar.html', true);
+    const created = adapter.createTab('myDEV', '#mydev');
+    expect(created?.link.hasAttribute('data-feed-nav')).toBe(false);
+    expect(created?.link.getAttribute('data-text')).toBeNull();
+  });
+
+  it('returns null / [] when there is no tab bar', () => {
+    expect(adapter.findTabs()).toEqual([]);
+    expect(adapter.createTab('myDEV', '#mydev')).toBeNull();
+  });
+});
+
+describe('feed region', () => {
+  it('logged out: hides everything in the main column except the tab bar header', () => {
+    mountFixture('logged-out/feed.html');
+    const region = adapter.findFeedRegion();
+    expect(region).not.toBeNull();
+    const nav = document.querySelector('nav');
+    expect(region?.hide.some((el) => el.contains(nav))).toBe(false);
+    expect(region?.hide.map((el) => el.id || el.className.split(' ')[0])).toEqual([
+      'crayons-story',
+      'article-index-podcast-div',
+      'substories',
+    ]);
+    expect(region?.mount.parent.id).toBe('main-content');
+    expect(region?.mount.before).toBe(region?.hide[0]);
+  });
+
+  it('logged in: hides the Preact feed mount point only', () => {
+    document.body.setAttribute('data-user-status', 'logged-in');
+    const main = document.createElement('main');
+    main.id = 'main-content';
+    const feed = document.createElement('div');
+    feed.id = 'homepage-feed';
+    main.append(feed);
+    document.body.append(main);
+    const region = adapter.findFeedRegion();
+    expect(region?.hide).toEqual([feed]);
+    expect(region?.mount).toEqual({ parent: main, before: feed });
+  });
+
+  it('is null without a feed', () => {
+    expect(adapter.findFeedRegion()).toBeNull();
+  });
+});

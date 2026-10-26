@@ -90,6 +90,20 @@ export interface SiteAdapter {
   /** Reversible, attribute-based. */
   hideCard(card: Element): void;
   unhideCard(card: Element): void;
+  /** The native feed tab links, in order (empty if the tab bar is missing). */
+  findTabs(): HTMLElement[];
+  isTabCurrent(tab: Element): boolean;
+  setTabCurrent(tab: Element, current: boolean): void;
+  /**
+   * A new tab modelled on the last native tab (same look) with the given label and href and none of
+   * dev.to's behaviour. The caller inserts `item` into `findTabBar()`.
+   */
+  createTab(label: string, href: string): { item: HTMLElement; link: HTMLElement } | null;
+  /**
+   * The part of the page the myDEV view replaces: `hide` are the native feed elements and `mount`
+   * says where the view goes. The tab bar is never part of it.
+   */
+  findFeedRegion(): { hide: Element[]; mount: { parent: Element; before: Element | null } } | null;
 }
 
 export interface StoreChange {

@@ -260,7 +260,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
   - Tests: one button per card; no button on ads; success and failure flows; keyboard activation; no duplicate buttons after the card is processed again.
   - Done when: tests pass.
 
-- [ ] **T-505: myDEV tab** (FR-1, FR-8)
+- [x] **T-505: myDEV tab** (FR-1, FR-8)
   - `src/features/mydev/mydev-tab.ts`:
     - Clone the native tab structure without `href` or handlers and append it last.
     - Clicking it calls `pushState('#mydev')` and activates the view.
