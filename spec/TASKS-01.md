@@ -298,7 +298,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
   - Tests: a throwing fake feature doesn't affect others; route switch disposes and re-inits; a disabled flag skips the feature.
   - Done when: tests pass.
 
-- [ ] **T-602: Content bootstrap** (SPEC §8.2)
+- [x] **T-602: Content bootstrap** (SPEC §8.2)
   - `src/content/index.ts`:
     1. At `document_start`, set the pre-filter attribute and start `store.ready`.
     2. On DOM ready, create the adapter and FeatureHost.

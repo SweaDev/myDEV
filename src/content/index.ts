@@ -1,1 +1,3 @@
-// content script entry (implemented in T-602)
+import { startBootstrap } from './bootstrap.ts';
+
+startBootstrap();
