@@ -223,7 +223,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
 
 ## M5 — F-01 myDEV Feature
 
-- [ ] **T-501: Content StoreClient** (SPEC §6.2)
+- [x] **T-501: Content StoreClient** (SPEC §6.2)
   - `src/content/store-client.ts`:
     - a `ready` promise that loads `mydev/activeIds` into a `Set`,
     - a synchronous `has(id)`,
