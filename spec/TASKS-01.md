@@ -251,7 +251,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
   - Tests: hides known IDs on the first pass and on appended nodes; doesn't process a card twice; cross-tab change hides cards already on screen; cleanup on abort.
   - Done when: tests pass.
 
-- [ ] **T-504: Tick button** (FR-2, FR-3, SPEC §4)
+- [x] **T-504: Tick button** (FR-2, FR-3, SPEC §4)
   - `src/features/mydev/check-button.ts`:
     - Insert one button after Bookmark, or at the end of the action row as a fallback, on each visible post card. No button on ads.
     - Use one delegated click handler.

@@ -5,10 +5,14 @@ import type { FeatureContext } from '../../core/types.ts';
 /**
  * Waits for the ID set, hides matching cards that are already on screen, then watches the feed
  * container for new ones with a single MutationObserver. Everything is undone when `ctx.signal`
- * aborts. Resolves `true` once the first pass is done and `false` if the filter could not start
+ * aborts. `onCard` lets the tick buttons ride on the same observer. Resolves `true` once the first pass is done and `false` if the filter could not start
  * (no feed container, ID set unavailable, or aborted first), so the caller can fail open.
  */
-export async function startFeedFilter(ctx: FeatureContext): Promise<boolean> {
+export async function startFeedFilter(
+  ctx: FeatureContext,
+  /** Called for every card that stays visible, once per post, so other modules share this observer. */
+  onCard?: (card: Element) => void,
+): Promise<boolean> {
   const { site, store, log, signal } = ctx;
 
   try {
@@ -30,8 +34,12 @@ export async function startFeedFilter(ctx: FeatureContext): Promise<boolean> {
     const id = site.getPostId(card);
     if (id === null || card.getAttribute(MARKER.processed) === id) return;
     card.setAttribute(MARKER.processed, id);
-    if (store.has(id)) site.hideCard(card);
-    else if (card.hasAttribute(MARKER.hidden)) site.unhideCard(card);
+    if (store.has(id)) {
+      site.hideCard(card);
+      return;
+    }
+    if (card.hasAttribute(MARKER.hidden)) site.unhideCard(card);
+    onCard?.(card);
   };
 
   const scan = (root: ParentNode) => {
