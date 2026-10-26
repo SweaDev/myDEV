@@ -1,1 +1,3 @@
-// background entry (implemented in T-302)
+import { startBackground } from './start.ts';
+
+startBackground();

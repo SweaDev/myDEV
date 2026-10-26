@@ -171,7 +171,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
   - Tests: foreign sender, unknown type, wrong `v` and bad payload are all rejected; valid requests return the correct data.
   - Done when: tests pass.
 
-- [ ] **T-302: Background entry point**
+- [x] **T-302: Background entry point**
   - `src/background/index.ts`: create the init promise (`runMigrations`), register `onMessage` (requests wait for init, and the listener returns `true` for async responses), and wire up `LocalMyDevStore`.
   - Done when: `pnpm build` passes, and a test using the chrome mock shows a request sent before init completes still gets a response.
 
