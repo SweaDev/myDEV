@@ -103,7 +103,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
     - `Unsubscribe`.
   - Done when: typecheck passes.
 
-- [ ] **T-102: URL guard** (SEC-4)
+- [x] **T-102: URL guard** (SEC-4)
   - `src/core/url-guard.ts`: `safeLinkUrl` (https, host exactly `dev.to`) and `safeImageUrl` (https plus an allowlist constant, with a placeholder list until T-401).
   - Tests: accepts valid URLs; rejects `javascript:`, `data:`, `http:`, `dev.to.evil.com`, `evil.com/dev.to`, `https://user@evil.com`, relative URLs, and empty or non-string input.
   - Done when: tests pass.
