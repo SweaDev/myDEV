@@ -60,6 +60,12 @@ function isUndefinedOrNull(value: unknown): boolean {
   return value === undefined || value === null;
 }
 
+export const isValidTag = (value: unknown): value is string =>
+  typeof value === 'string' && TAG.test(value);
+
+export const isIsoTimestamp = (value: unknown): value is string =>
+  typeof value === 'string' && ISO_8601.test(value) && !Number.isNaN(Date.parse(value));
+
 export function isMyDevRecordInput(raw: unknown): MyDevRecordInput | null {
   const obj = asDict(raw);
   if (!obj) return null;

@@ -208,7 +208,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
   - Tests: each feed URL in the route table; `#mydev`; non-home pages give `other`; duplicate events produce a single callback.
   - Done when: tests pass.
 
-- [ ] **T-404: Card parser** (SPEC §5.1, SEC-4/5)
+- [x] **T-404: Card parser** (SPEC §5.1, SEC-4/5)
   - `src/site/devto/parse-card.ts`: `parseCard(card, sourceFeed)` → `MyDevRecordInput | null`, with every field going through the validators.
   - Tests against each fixture with snapshot assertions; a card missing a required field gives `null`; hostile attribute values are dropped.
   - Done when: tests pass.
