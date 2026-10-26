@@ -129,7 +129,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
   - `src/core/logger.ts`: `createLogger(scope)` with the `[mydev:<scope>]` prefix, `debug/info/warn/error`, and `warnOnce(key)`/rate limiting.
   - Done when: tests pass.
 
-- [ ] **T-106: Message protocol** (SPEC §6.3)
+- [x] **T-106: Message protocol** (SPEC §6.3)
   - `src/core/messages.ts`:
     - the `Request` / `Response` unions with `v: 1`, and a typed `ResponseFor<R>`,
     - `send(req)` with one retry when the receiving end doesn't exist.
