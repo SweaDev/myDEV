@@ -149,7 +149,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
   - Tests: first run creates meta and settings; a second run is a no-op; an existing `installId` is kept.
   - Done when: tests pass.
 
-- [ ] **T-203: MyDevStore interface and LocalMyDevStore** (SPEC §5.3)
+- [x] **T-203: MyDevStore interface and LocalMyDevStore** (SPEC §5.3)
   - `src/storage/mydev-store.ts`: the interface.
   - `src/storage/local-mydev-store.ts`:
     - `add` handles insert and revive, and is the only place that sets timestamps and `schemaVersion`.
