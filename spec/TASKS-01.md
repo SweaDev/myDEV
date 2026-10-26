@@ -70,7 +70,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
   - Add placeholder icons (16/32/48/128) under `public/icons/`.
   - Done when: all three files are valid JSON and contain no permissions beyond SEC-1.
 
-- [ ] **T-005: Build script**
+- [x] **T-005: Build script**
   - Write `scripts/build.ts`. It uses the Vite JS API per entry:
     - content as a single IIFE,
     - background as an ES module for Chrome and a classic script for Firefox,
