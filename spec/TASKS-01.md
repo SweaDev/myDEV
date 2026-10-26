@@ -108,7 +108,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
   - Tests: accepts valid URLs; rejects `javascript:`, `data:`, `http:`, `dev.to.evil.com`, `evil.com/dev.to`, `https://user@evil.com`, relative URLs, and empty or non-string input.
   - Done when: tests pass.
 
-- [ ] **T-103: Validators** (SEC-5)
+- [x] **T-103: Validators** (SEC-5)
   - `src/core/validate.ts`: `isMyDevRecordInput`, `isMyDevRecord`, `isRequest`, `isMeta`, `isSettings`.
     - Enforce every rule in SPEC §5.1.
     - Trim strings and strip unknown fields; return a normalised copy or `null`.

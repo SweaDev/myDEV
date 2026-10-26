@@ -118,3 +118,13 @@ export interface FeatureModule {
   /** Remove all DOM, listeners and observers the feature created. */
   dispose(): void;
 }
+
+/** Content script → background requests (SPEC §6.3). */
+export type Request =
+  | { v: 1; type: 'mydev/add'; record: MyDevRecordInput }
+  | { v: 1; type: 'mydev/remove'; postId: string }
+  | { v: 1; type: 'mydev/list' }
+  | { v: 1; type: 'mydev/activeIds' };
+
+export type Response<T> =
+  { ok: true; data: T } | { ok: false; error: { code: ErrorCode; message: string } };
