@@ -334,6 +334,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
 - [ ] 👤 **T-704: Performance check** (SPEC §8.3)
   - Scroll to 500+ cards with many IDs in myDEV. Profile the observer callback (< 5 ms per 100 cards), and check there are no long tasks and no leaked observers after route changes.
   - Done when: the human confirms, or reports issues that become new tasks.
+  > Blocked: needs human — needs a real browser with DevTools Performance: scroll a feed to 500+ cards with many IDs saved, profile the observer callback (< 5 ms per 100 cards), check for long tasks and that observers don't accumulate across route changes.
 
 - [ ] 👤 **T-705: Manual end-to-end pass** (AC-1..AC-11)
   - Run the PLAN-01 §3 manual checklist in current stable Chrome and Firefox, logged in and logged out, in light and dark themes.
