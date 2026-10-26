@@ -289,7 +289,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
 
 ## M6 — Feature Host & Bootstrap
 
-- [ ] **T-601: Feature registry and host** (SPEC §6.5)
+- [x] **T-601: Feature registry and host** (SPEC §6.5)
   - `src/features/index.ts` holds the registry.
   - `src/content/feature-host.ts`:
     - reads settings (all enabled by default),
