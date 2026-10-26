@@ -1,0 +1,9 @@
+<!-- SYNTHETIC fixture, not captured from dev.to: billboards are injected by JavaScript and are absent
+     from the static HTML. These blocks stand in for "anything in the feed that is not a post card".
+     isPostCard() must accept only .crayons-story elements with a numeric data-feed-content-id. -->
+<div class="crayons-card" data-synthetic="billboard">
+  <a href="https://dev.to/example">Sponsored</a>
+</div>
+<div class="crayons-story" data-synthetic="no-id"><a href="https://dev.to/example">No id</a></div>
+<div class="crayons-story" data-feed-content-id="not-a-number" data-synthetic="bad-id"></div>
+<div id="article-index-podcast-div"></div>

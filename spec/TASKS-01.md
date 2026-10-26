@@ -179,7 +179,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
 
 ## M4 — dev.to Site Adapter
 
-- [ ] **T-401: Investigate dev.to markup (logged out) and save fixtures**
+- [x] **T-401: Investigate dev.to markup (logged out) and save fixtures**
   - Fetch the logged-out dev.to home page and feed tabs (WebFetch or curl; the logged-out tabs are Relevant, Latest, Top). Identify:
     - the feed container and how infinite-scroll pages append,
     - post card root and post ID location,

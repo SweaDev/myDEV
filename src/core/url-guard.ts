@@ -7,14 +7,11 @@ export type SafeUrl = string & { readonly [safeUrlBrand]: true };
 const LINK_HOSTS: readonly string[] = ['dev.to'];
 
 /**
- * Hosts dev.to serves images from. Placeholder list: T-401 replaces it with the hosts found in the
- * real markup.
+ * Hosts dev.to serves post images from. Card cover and avatar URLs are all
+ * `https://media2.dev.to/dynamic/image/...` (checked in T-401); the S3 bucket is the origin behind
+ * it. Extend only with hosts seen in real markup.
  */
-export const IMAGE_HOSTS: readonly string[] = [
-  'dev.to',
-  'media2.dev.to',
-  'dev-to-uploads.s3.amazonaws.com',
-];
+export const IMAGE_HOSTS: readonly string[] = ['media2.dev.to', 'dev-to-uploads.s3.amazonaws.com'];
 
 function guard(raw: unknown, hosts: readonly string[]): SafeUrl | null {
   if (typeof raw !== 'string' || raw.length === 0 || raw.length > 2048) return null;

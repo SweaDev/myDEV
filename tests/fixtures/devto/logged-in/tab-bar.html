@@ -1,0 +1,126 @@
+<!-- Source: logged-in dev.to home page (view-source), 2026-10-26. Trimmed to the feed tab bar;
+     SVG icon bodies and the <style>/<script> blocks that followed it are omitted. The feed itself
+     (#homepage-feed) is empty in view-source: cards are rendered client-side (see T-402). -->
+<nav class="w-100 flex items-center justify-between mx-0 px-0" aria-label="View posts by">
+  <ul class="flex justify-between items-center w-100 m-0 p-0">
+    <div class="feed-pill-nav">
+      <li>
+        <a
+          data-feed-nav="discover"
+          href="/discover"
+          class="crayons-navigation__item pill-nav-item flex items-center gap-1.5 xl:gap-2 crayons-navigation__item--current"
+        >
+          <svg class="crayons-icon hidden xl:block" width="16" height="16"></svg>
+          <span style="display: grid; place-items: center start">
+            <span aria-hidden="true" style="grid-area: 1/1; visibility: hidden; font-weight: bold"
+              >Discover</span
+            >
+            <span style="grid-area: 1/1">Discover</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a
+          data-feed-nav="following"
+          href="/following"
+          class="crayons-navigation__item pill-nav-item flex items-center gap-1.5 xl:gap-2"
+        >
+          <svg class="crayons-icon hidden xl:block" width="16" height="16"></svg>
+          <span style="display: grid; place-items: center start">
+            <span aria-hidden="true" style="grid-area: 1/1; visibility: hidden; font-weight: bold"
+              >Following</span
+            >
+            <span style="grid-area: 1/1">Following</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a
+          data-feed-nav="curated"
+          href="/curated"
+          class="crayons-navigation__item pill-nav-item flex items-center gap-1.5 xl:gap-2"
+        >
+          <svg
+            class="crayons-icon crayons-icon--default hidden xl:block"
+            width="16"
+            height="16"
+          ></svg>
+          <span style="display: grid; place-items: center start">
+            <span aria-hidden="true" style="grid-area: 1/1; visibility: hidden; font-weight: bold"
+              >Curated</span
+            >
+            <span style="grid-area: 1/1">Curated</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a
+          data-feed-nav="latest"
+          href="/latest"
+          class="crayons-navigation__item pill-nav-item flex items-center gap-1.5 xl:gap-2"
+        >
+          <svg class="crayons-icon hidden xl:block" width="16" height="16"></svg>
+          <span style="display: grid; place-items: center start">
+            <span aria-hidden="true" style="grid-area: 1/1; visibility: hidden; font-weight: bold"
+              >Latest</span
+            >
+            <span style="grid-area: 1/1">Latest</span>
+          </span>
+        </a>
+      </li>
+    </div>
+    <div class="flex gap-1 relative">
+      <li>
+        <button
+          id="feed-dropdown-trigger"
+          aria-controls="feed-dropdown"
+          aria-expanded="false"
+          aria-haspopup="true"
+          class="dropBtn crayons-bb__dropdown crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon"
+          aria-label="Toggle dropdown menu"
+        >
+          <svg class="crayons-icon pointer-events-none" width="24" height="24"></svg>
+        </button>
+      </li>
+      <ul id="feed-dropdown-menu" class="crayons-dropdown feed-dropdown right-0">
+        <li>
+          <a data-text="Week" href="/top/week" class="p-2 crayons-navigation__item"
+            >Top this week</a
+          >
+        </li>
+        <li>
+          <a data-text="Month" href="/top/month" class="p-2 crayons-navigation__item"
+            >Top this month</a
+          >
+        </li>
+        <li>
+          <a data-text="Year" href="/top/year" class="p-2 crayons-navigation__item"
+            >Top this year</a
+          >
+        </li>
+        <li>
+          <a data-text="Infinity" href="/top/infinity" class="p-2 crayons-navigation__item"
+            >Top of all time</a
+          >
+        </li>
+        <hr />
+        <li>
+          <a
+            data-text="Latest (Following only)"
+            href="/following/latest"
+            class="p-2 crayons-navigation__item"
+            >Latest (Following only)</a
+          >
+        </li>
+        <li>
+          <a
+            data-text="Latest (Less filtered)"
+            href="/latest_less_filtered"
+            class="p-2 crayons-navigation__item"
+            >Latest (Less filtered)</a
+          >
+        </li>
+      </ul>
+    </div>
+  </ul>
+</nav>
