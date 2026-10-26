@@ -23,10 +23,12 @@ const FEATURE_ID = /^[a-z0-9-]{1,40}$/;
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const ISO_8601 = /^\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?(?:Z|[+-]\d{2}:\d{2})?)?$/;
 const SOURCE_FEEDS: readonly SourceFeed[] = [
+  'relevant',
+  'latest',
+  'top',
   'discover',
   'following',
   'curated',
-  'latest',
   'unknown',
 ];
 const MAX_TAGS = 10;

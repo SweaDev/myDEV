@@ -144,12 +144,12 @@ Each milestone ends with green `pnpm lint`, `pnpm typecheck` and `pnpm test`.
    - where the numeric post ID lives (attribute or element `id` pattern),
    - the Bookmark button and its action row,
    - title link, author name, username and avatar, tags, cover image, reading time, publish `<time>`,
-   - the feed tab bar, the active-tab class and `aria-current`, and the URL for each feed (Discover, Following, Curated, Latest),
+   - the feed tab bar, the active-tab class and `aria-current`, and the URL for each feed tab present in each layout (logged out: Relevant, Latest, Top; logged in: expected Discover, Following, Curated, Latest, to be confirmed),
    - how dev.to performs client-side navigation (affects `routes.ts`),
    - image CDN hosts (fills the URL-guard image allowlist).
 2. **Save trimmed HTML fixtures** under `tests/fixtures/devto/`: a feed page, a featured card, a normal card, a card with no cover, a logged-out card, an ad or billboard, and the tab bar for each feed.
 3. **Implement:**
-   - `routes.ts`: `parseRoute(url)` → `Route`; `onRouteChange` using `popstate`, `hashchange` and an observer on the main content root, de-duplicated.
+   - `routes.ts`: `parseRoute(url)` → `Route` using the route table in `selectors.ts` (SPEC §6.4, *Feed layouts*); `onRouteChange` using `popstate`, `hashchange` and an observer on the main content root, de-duplicated.
    - `parse-card.ts`: builds a `MyDevRecordInput` from a card. Every field goes through the validators and URL guard. It returns `null` if a required field is missing.
    - `adapter.ts`: the `SiteAdapter` from SPEC §6.4, returning `null` on any miss and never throwing. `hideCard` sets `data-mydev-hidden`, which is reversible.
 - **Tests:** parse each fixture and check the snapshots; ads give `isPostCard === false`; a mutated fixture with selectors removed gives `null` everywhere without throwing; route parsing works for every feed URL plus `#mydev`.
@@ -233,7 +233,7 @@ Each module gets `ctx` (site, store, log, signal) and cleans up on `signal` abor
 1. Install in Chrome and Firefox and open `https://dev.to/` while logged in. The myDEV tab is present (AC-1).
 2. In each native feed, every post shows one tick after Bookmark and ads show none (AC-2).
 3. Check a post. It disappears, and myDEV shows it at the top (AC-3).
-4. Reload, then visit all four feeds and scroll through several infinite-scroll pages. The post never appears and nothing flashes (AC-4).
+4. Reload, then visit every native feed and scroll through several infinite-scroll pages. The post never appears and nothing flashes (AC-4).
 5. myDEV cards show the snapshot fields. Remove everything and the empty state appears (AC-5).
 6. Uncheck in myDEV. After a reload, the post can appear in native feeds again (AC-6).
 7. With two tabs open, check in A and watch B update live (AC-7).

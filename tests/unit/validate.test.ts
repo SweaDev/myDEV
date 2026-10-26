@@ -192,9 +192,12 @@ describe('isMyDevRecordInput', () => {
   });
 
   describe('sourceFeed', () => {
-    it.each(['discover', 'following', 'curated', 'latest', 'unknown'])('accepts %j', (feed) => {
-      expect(withInput((v) => (v.sourceFeed = feed))?.sourceFeed).toBe(feed);
-    });
+    it.each(['relevant', 'latest', 'top', 'discover', 'following', 'curated', 'unknown'])(
+      'accepts %j',
+      (feed) => {
+        expect(withInput((v) => (v.sourceFeed = feed))?.sourceFeed).toBe(feed);
+      },
+    );
     it('rejects anything else and a missing value', () => {
       expect(withInput((v) => (v.sourceFeed = 'mydev'))).toBeNull();
       expect(withInput((v) => delete v.sourceFeed)).toBeNull();

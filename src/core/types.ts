@@ -1,7 +1,10 @@
 /** Shared types for the myDEV extension. See spec/SPEC-01.md §5.1 and §6.3–6.5. */
 
-/** The four native dev.to home feeds. */
-export type FeedKind = 'discover' | 'following' | 'curated' | 'latest';
+/**
+ * Native dev.to home feeds. Which of them exist depends on layout and login state: `relevant`,
+ * `latest`, `top` (seen logged out) and `discover`, `following`, `curated` (logged-in layout).
+ */
+export type FeedKind = 'relevant' | 'latest' | 'top' | 'discover' | 'following' | 'curated';
 
 export type SourceFeed = FeedKind | 'unknown';
 

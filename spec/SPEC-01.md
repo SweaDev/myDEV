@@ -13,14 +13,14 @@
 
 ## 1. Overview
 
-**myDEV** is a browser extension that changes the dev.to home page for anyone who installs it. The first feature, F-01, adds a fifth home-feed tab called **myDEV**, next to the native **Discover**, **Following**, **Curated** and **Latest** feeds.
+**myDEV** is a browser extension that changes the dev.to home page for anyone who installs it. The first feature, F-01, adds a home-feed tab called **myDEV** after the native feed tabs.
 
-Each post card in the four native feeds gets a tick button right after the Bookmark button. The tick starts unchecked. When the user checks it, the post:
+Each post card in the native feeds gets a tick button right after the Bookmark button. The tick starts unchecked. When the user checks it, the post:
 
 1. is removed from the current feed straight away,
 2. is saved locally as a *myDEV record*,
 3. appears in the **myDEV** feed, and
-4. is hidden from all four native feeds every time they load in the future.
+4. is hidden from all native feeds every time they load in the future.
 
 This is the first of several planned features. The architecture in §6 is built so later features, a settings UI, and server-side sync can be added **without redesigning** what this spec puts in place.
 
@@ -46,7 +46,7 @@ This is the first of several planned features. The architecture in §6 is built 
 
 | Term             | Meaning                                                                                                  |
 | ---------------- | -------------------------------------------------------------------------------------------------------- |
-| Native feed      | One of the four dev.to home feeds: Discover, Following, Curated, Latest.                                 |
+| Native feed      | A dev.to home feed tab. dev.to shows different tabs depending on the layout: Relevant, Latest, Top (verified logged out) or Discover, Following, Curated, Latest. See §6.4. |
 | myDEV feed        | The feed this extension adds. It lists the user's myDEV records.                                          |
 | Post card        | The DOM element dev.to renders for one post in a feed list, including the large "featured" first card.   |
 | Post ID          | dev.to's numeric article ID, read from the post card markup. It is the primary key.                      |
@@ -61,7 +61,7 @@ This is the first of several planned features. The architecture in §6 is built 
 
 | ID    | Requirement |
 | ----- | ----------- |
-| FR-1  | **myDEV tab.** On the dev.to home page, the extension adds a tab labelled **myDEV** to the feed tab bar, after the last native tab. It looks and behaves like the native tabs (active state, hover, focus). It appears whether the user is logged in or not. When logged out, some native tabs such as Following may be missing; the myDEV tab still goes after whichever tabs are present. |
+| FR-1  | **myDEV tab.** On the dev.to home page, the extension adds a tab labelled **myDEV** to the feed tab bar, after the last native tab. It looks and behaves like the native tabs (active state, hover, focus). It appears whether the user is logged in or not. The set of native tabs varies by layout and login state; the myDEV tab always goes after whichever tabs are present. |
 | FR-2  | **Tick button.** Every post card in a native feed gets a tick button placed right after the card's Bookmark button. If a card has no Bookmark button (for example, logged out), the tick button goes at the end of the card's action row. Ads, billboards, sponsor blocks, onboarding widgets and any non-post card are skipped. Each card gets at most one tick button, even if it is processed more than once. |
 | FR-3  | **Check → move to myDEV.** When the user activates an unchecked tick button: (a) the card is parsed into a myDEV record (§5); (b) the record is saved; (c) after the save succeeds, the card is hidden from the current feed. If parsing or saving fails, the card stays visible, the button stays unchecked, and a short, non-blocking error message appears near the button. |
 | FR-4  | **Filter native feeds.** Whenever a native feed renders post cards (first page load, switching tabs, infinite-scroll pages, in-app navigation back to home), any card whose post ID matches an *active* myDEV record (one with `deletedAt === null`) is hidden. The user must not see a flash of the hidden card (§8.2). |
@@ -85,7 +85,7 @@ This is the first of several planned features. The architecture in §6 is built 
 - **myDEV tab.** It matches the native tab element and its active and inactive styling. It sets `aria-current="page"` when active, matching dev.to's convention.
 - **Theme.** All extension CSS uses dev.to's existing CSS custom properties, such as `--card-bg`, `--base-*` and `--accent-brand`, with sensible fallbacks. Light, dark and other dev.to themes are then supported automatically.
 - **Errors.** Error messages are short, appear inline next to the control, use `role="status"`, and disappear on their own after a few seconds.
-- **Empty state (myDEV).** "No posts in myDEV yet. Use the ✓ button on any post in Discover, Following, Curated or Latest to move it here."
+- **Empty state (myDEV).** "No posts in myDEV yet. Use the ✓ button on any post in the other feeds to move it here."
 
 ---
 
@@ -96,7 +96,7 @@ This is the first of several planned features. The architecture in §6 is built 
 | Field                 | Type                                   | Required | Notes |
 | --------------------- | -------------------------------------- | -------- | ----- |
 | `postId`              | `string` (decimal digits only)         | yes      | dev.to article ID. Stored as a string to avoid precision issues and to make a stable key. |
-| `url`                 | `string`                               | yes      | Absolute `https://dev.to/...` URL. Must pass the URL guard (§7.3). |
+| `url`                 | `string`                               | yes      | Absolute `https://dev.to/...` URL. Must pass the URL guard (SEC-4). |
 | `title`               | `string` (1–300 chars)                 | yes      | Plain text. |
 | `author.name`         | `string` (≤ 120 chars)                 | yes      | Plain text. |
 | `author.username`     | `string` (`[A-Za-z0-9_]{1,60}`)        | yes      |  |
@@ -105,7 +105,7 @@ This is the first of several planned features. The architecture in §6 is built 
 | `coverImageUrl`       | `string \| null`                       | no       | Must pass the URL guard. |
 | `readingTimeMinutes`  | `number \| null` (integer 0–600)       | no       |  |
 | `publishedAt`         | `string \| null` (ISO-8601)            | no       |  |
-| `sourceFeed`          | `"discover" \| "following" \| "curated" \| "latest" \| "unknown"` | yes | The feed the post was checked from. |
+| `sourceFeed`          | `"relevant" \| "latest" \| "top" \| "discover" \| "following" \| "curated" \| "unknown"` | yes | The feed the post was checked from. |
 | `addedAt`             | `number` (epoch ms)                    | yes      | When the post was first checked. Re-checking after a removal resets it. |
 | `updatedAt`           | `number` (epoch ms)                    | yes      | Changes on every write. Used for future sync merges. |
 | `deletedAt`           | `number \| null` (epoch ms)            | yes      | `null` means active. A number means soft-deleted. |
@@ -120,7 +120,7 @@ This is the first of several planned features. The architecture in §6 is built 
 | `settings`              | `{ features: { mydev: { enabled: true } } }`. Reserved for feature flags (§6.5). |
 
 - Each record has its own key. That keeps writes small, gives `storage.onChanged` one change per post, and makes later sync diffs at record level simple.
-- Every value read from storage goes through schema validation (§7.4). Records that fail are ignored and logged; they are never rendered.
+- Every value read from storage goes through schema validation (SEC-5). Records that fail are ignored and logged; they are never rendered.
 - The expected size is about 1 KB per record, so the 10 MB `storage.local` quota holds roughly 10,000 posts. `unlimitedStorage` is **not** requested.
 
 ### 5.3 Lifecycle
@@ -147,7 +147,7 @@ Soft-deleted records (tombstones) are kept so a future sync can spread deletions
 ┌──────────────────────── dev.to tab (isolated world) ────────────────────────┐
 │  content/index.ts  (bootstrap @ document_start)                             │
 │     ├─ FeatureHost ── registers ──► features/mydev  (FeedFilter, CheckButton,│
-│     │                                MineTab, MineView)                     │
+│     │                                MyDevTab, MyDevView)                   │
 │     ├─ SiteAdapter (site/devto) ── the ONLY module that knows dev.to DOM    │
 │     └─ StoreClient ── typed messages ──┐        ▲ storage.onChanged (read)  │
 └────────────────────────────────────────┼────────┼───────────────────────────┘
@@ -186,7 +186,7 @@ type Response<T> = { ok: true; data: T } | { ok: false; error: { code: ErrorCode
 ```
 
 - `MyDevRecordInput` contains only the snapshot fields. The background sets `addedAt`, `updatedAt`, `deletedAt` and `schemaVersion`, so content scripts can't forge timestamps.
-- The background rejects any message that fails validation, has an unknown `type` or `v`, or does not come from this extension (§7.5).
+- The background rejects any message that fails validation, has an unknown `type` or `v`, or does not come from this extension (SEC-6).
 - Unknown message types are an error, never ignored silently.
 
 ### 6.4 Site adapter (`site/devto`)
@@ -195,19 +195,20 @@ This is the only module allowed to contain dev.to selectors, URL patterns or kno
 
 ```ts
 interface SiteAdapter {
-  currentRoute(): Route;                       // { kind: "home"; feed: FeedKind } | { kind: "other" }
+  currentRoute(): Route;                       // { kind: "home"; feed: FeedKind | "mydev" } | { kind: "other" }
   onRouteChange(cb: (r: Route) => void): Unsubscribe;
   findFeedContainer(): Element | null;
   findTabBar(): Element | null;
   isPostCard(el: Element): boolean;
   getPostId(card: Element): string | null;
   findActionAnchor(card: Element): { parent: Element; after: Element | null } | null; // Bookmark position
-  parseCard(card: Element): MyDevRecordInput | null;
+  parseCard(card: Element): MyDevRecordInput | null;   // sourceFeed comes from currentRoute()
   hideCard(card: Element): void;               // reversible, attribute-based
 }
 ```
 
 - All selectors live in a single `selectors.ts` constants file, checked against saved HTML fixtures in unit tests.
+- **Feed layouts.** dev.to shows different feed tabs depending on layout and login state. The adapter does not assume a fixed list of feeds: a route table in `selectors.ts` maps URL paths to feed kinds (`relevant`, `latest`, `top`, `discover`, `following`, `curated`), and the active feed is taken from the active tab (`aria-current="page"`) with the URL as fallback. The tab bar is found through its markup, and the myDEV tab is cloned from an existing tab, so a layout with different tabs needs only table and fixture changes. Verified logged out: tabs Relevant (`/`), Latest (`/latest`), Top (`/top/*`) in `nav[aria-label="View posts by"]`; post cards carry `data-feed-content-id`. The logged-in layout is to be captured in T-402.
 - When something can't be found, the adapter returns `null` and never throws. That is the basis of FR-9.
 - If dev.to changes its markup, the fix should be limited to this module and its fixtures.
 
@@ -311,9 +312,9 @@ These points explain *why* parts of the design look the way they do. Nothing in 
 | #     | Criterion | FR |
 | ----- | --------- | -- |
 | AC-1  | On `https://dev.to/`, a **myDEV** tab appears after the last native tab, both logged in and logged out. | FR-1 |
-| AC-2  | Every post card in Discover, Following, Curated and Latest shows one unchecked tick button right after Bookmark. Ads and billboards have none. | FR-2 |
+| AC-2  | Every post card in every native feed shows one unchecked tick button right after Bookmark (or at the end of the action row when there is no Bookmark button). Ads and billboards have none. | FR-2 |
 | AC-3  | Checking a post hides it from the current feed straight away, and it appears at the top of myDEV. | FR-3, FR-5 |
-| AC-4  | After a reload, the checked post appears in none of the four native feeds, including posts that arrive later through infinite scroll. No flash is visible. | FR-4 |
+| AC-4  | After a reload, the checked post appears in none of the native feeds, including posts that arrive later through infinite scroll. No flash is visible. | FR-4 |
 | AC-5  | myDEV renders each saved post from its snapshot with title, link, author, tags, cover (if any), reading time and date. With no records, it shows the empty state. | FR-5 |
 | AC-6  | Unchecking in myDEV removes the post from myDEV, and it can appear in native feeds again after a reload. | FR-6 |
 | AC-7  | With two dev.to tabs open, checking a post in tab A removes it from tab B's feed, and adds it to tab B's myDEV view if that is open, without a reload. | FR-7 |

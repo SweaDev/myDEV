@@ -180,12 +180,12 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
 ## M4 — dev.to Site Adapter
 
 - [ ] **T-401: Investigate dev.to markup (logged out) and save fixtures**
-  - Fetch the logged-out dev.to home page and feed tabs (WebFetch or curl). Identify:
+  - Fetch the logged-out dev.to home page and feed tabs (WebFetch or curl; the logged-out tabs are Relevant, Latest, Top). Identify:
     - the feed container and how infinite-scroll pages append,
     - post card root and post ID location,
     - the Bookmark button and action row,
     - title, author, avatar, tags, cover, reading time and `<time>`,
-    - tab bar markup, active-tab marker, and the URL of each feed,
+    - tab bar markup, active-tab marker, and the URL of each feed (this becomes the route table in `selectors.ts`),
     - ad, billboard and widget markup,
     - image CDN hosts.
   - Write the findings as commented constants in `src/site/devto/selectors.ts`.
@@ -194,17 +194,17 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
   - Strip any personal data from the fixtures.
   - Done when: `selectors.ts` and the fixtures are committed with a short summary of findings at the top of `selectors.ts`.
 
-- [ ] 👤 **T-402: Verify logged-in markup**
-  - Using a logged-in browser, confirm or correct the selectors for the Following tab, the Bookmark button and logged-in card differences.
+- [ ] 👤 **T-402: Capture logged-in markup**
+  - Using a logged-in browser, capture the logged-in feed tabs (expected Discover, Following, Curated, Latest) with their URLs, the Bookmark button and logged-in card differences, and add them to the route table and selectors.
   - Save logged-in fixtures (with personal data removed) to `tests/fixtures/devto/logged-in/`.
   - Done when: the human confirms, or provides HTML that Claude turns into fixtures.
   - *Depends on:* T-401. Not required for T-403 to T-405, which use logged-out fixtures and are revisited once this is done.
 
 - [ ] **T-403: Route parsing and change detection** (SPEC §8.4, FR-8)
   - `src/site/devto/routes.ts`:
-    - `parseRoute(url)` → `Route` for all four feeds, `#mydev`, and other pages,
+    - `parseRoute(url)` → `Route` for every feed in the route table, `#mydev`, and other pages,
     - `onRouteChange(cb)` using `popstate`, `hashchange` and a content-root observer, de-duplicated on route equality.
-  - Tests: each feed URL; `#mydev`; non-home pages give `other`; duplicate events produce a single callback.
+  - Tests: each feed URL in the route table; `#mydev`; non-home pages give `other`; duplicate events produce a single callback.
   - Done when: tests pass.
 
 - [ ] **T-404: Card parser** (SPEC §5.1, SEC-4/5)
