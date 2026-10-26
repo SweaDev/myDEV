@@ -60,7 +60,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
   - Add one sample test.
   - Done when: lint, typecheck and test all pass, and a scratch file using `el.innerHTML = x` fails lint (delete it before committing).
 
-- [ ] **T-004: Manifests**
+- [x] **T-004: Manifests**
   - Create `manifests/base.json` per PLAN-01 M0:
     - `name: "myDEV"`, `version`, `description`, `manifest_version: 3`, `permissions: ["storage"]`,
     - `content_scripts` with matches `https://dev.to/*`, `run_at: document_start`, `js` and `css`,
