@@ -311,7 +311,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
 
 ## M7 — Hardening & Release Readiness
 
-- [ ] **T-701: Security self-review** (SEC-1..10)
+- [x] **T-701: Security self-review** (SEC-1..10)
   - Add `scripts/check-manifest.ts` (run in `pnpm build`). It fails if the built manifests contain permissions, host permissions or keys outside the SEC-1 allowlist.
   - Run `pnpm lint`, `pnpm lint:firefox` and `pnpm audit`, and grep `src/` for HTML sinks and `eval`.
   - Record the results in `spec/SECURITY-REVIEW-01.md`.

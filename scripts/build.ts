@@ -2,6 +2,7 @@ import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { build, type InlineConfig } from 'vite';
+import { checkManifest } from './check-manifest.ts';
 import { mergeManifest } from './merge-manifest.ts';
 
 type Browser = 'chrome' | 'firefox';
@@ -68,6 +69,10 @@ async function buildBrowser(browser: Browser): Promise<void> {
     await readJson('manifests/base.json'),
     await readJson(`manifests/${browser}.json`),
   );
+  const problems = checkManifest(manifest);
+  if (problems.length > 0) {
+    throw new Error(`dist/${browser}/manifest.json is not allowed:\n - ${problems.join('\n - ')}`);
+  }
   await writeFile(resolve(outDir, 'manifest.json'), `${JSON.stringify(manifest, null, 2)}\n`);
   console.log(`built dist/${browser}`);
 }
