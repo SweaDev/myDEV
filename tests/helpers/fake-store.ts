@@ -7,6 +7,9 @@ import type {
 
 export interface FakeStore extends StoreClient {
   ids: Set<string>;
+  /** What `list()` returns (newest first). */
+  records: MyDevRecord[];
+  listError: Error | null;
   added: MyDevRecordInput[];
   removed: string[];
   /** Simulates a change made elsewhere (another tab). */
@@ -30,6 +33,8 @@ export function createFakeStore(initialIds: string[] = [], deferred = false): Fa
 
   const store: FakeStore = {
     ids: new Set(initialIds),
+    records: [],
+    listError: null,
     added: [],
     removed: [],
     failNext: null,
@@ -53,10 +58,12 @@ export function createFakeStore(initialIds: string[] = [], deferred = false): Fa
       }
       store.removed.push(postId);
       store.ids.delete(postId);
+      store.records = store.records.filter((r) => r.postId !== postId);
       store.push({ added: [], removed: [postId] });
     },
     async list(): Promise<MyDevRecord[]> {
-      return [];
+      if (store.listError) throw store.listError;
+      return [...store.records];
     },
     onChange(cb) {
       listeners.add(cb);

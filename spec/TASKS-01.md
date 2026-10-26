@@ -269,7 +269,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
   - Tests: the tab is appended once, logged in and logged out (fixtures); activation and deactivation; Back behavior; deep link `#mydev` on load.
   - Done when: tests pass.
 
-- [ ] **T-506: myDEV view** (FR-5, FR-6, FR-7)
+- [x] **T-506: myDEV view** (FR-5, FR-6, FR-7)
   - `src/features/mydev/mydev-view.ts`:
     - Hide the native feed container with an attribute.
     - Insert `<section data-mydev="mydev-view">` and render `store.list()` through `dom.ts`, with the checked tick, the empty state text from SPEC §4, and cover and avatar only when present.

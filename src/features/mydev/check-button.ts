@@ -54,6 +54,25 @@ export function errorMessageFor(code: unknown): string {
   }
 }
 
+/** Inline, self-clearing `role="status"` message next to a tick button; one at a time. */
+export function showTickError(
+  button: HTMLElement,
+  message: string,
+  timers: Set<ReturnType<typeof setTimeout>>,
+): void {
+  button.parentElement?.querySelector(`[${MARKER.owned}="${ERROR_ROLE}"]`)?.remove();
+  const note = el('span', {
+    text: message,
+    attrs: { class: 'mydev-tick-error', role: 'status', [MARKER.owned]: ERROR_ROLE },
+  });
+  button.after(note);
+  const timer = setTimeout(() => {
+    timers.delete(timer);
+    note.remove();
+  }, ERROR_MS);
+  timers.add(timer);
+}
+
 export interface CheckButtons {
   /** Adds the button to a card. Safe to call repeatedly: a card never gets two. */
   attach(card: Element): void;
@@ -69,19 +88,8 @@ export function createCheckButtons(ctx: FeatureContext): CheckButtons {
 
   const container = site.findFeedContainer();
 
-  const showError = (button: HTMLElement, message: string) => {
-    button.parentElement?.querySelector(`[${MARKER.owned}="${ERROR_ROLE}"]`)?.remove();
-    const note = el('span', {
-      text: message,
-      attrs: { class: 'mydev-tick-error', role: 'status', [MARKER.owned]: ERROR_ROLE },
-    });
-    button.after(note);
-    const timer = setTimeout(() => {
-      timers.delete(timer);
-      note.remove();
-    }, ERROR_MS);
-    timers.add(timer);
-  };
+  const showError = (button: HTMLElement, message: string) =>
+    showTickError(button, message, timers);
 
   const cardOf = (node: Element): Element | null => {
     for (let current: Element | null = node; current; current = current.parentElement) {
