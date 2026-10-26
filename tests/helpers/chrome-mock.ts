@@ -97,6 +97,7 @@ export function createChromeMock(defaultSender: MockSender = DEVTO_SENDER) {
   const chromeMock = {
     runtime: {
       id: EXTENSION_ID,
+      getURL: (path: string) => `chrome-extension://${EXTENSION_ID}/${path}`,
       sendMessage,
       onMessage: {
         addListener: (listener: MessageListener) => void messageListeners.add(listener),

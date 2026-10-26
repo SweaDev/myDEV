@@ -163,7 +163,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
 
 ## M3 — Background
 
-- [ ] **T-301: Background message router** (SPEC §6.3, SEC-6)
+- [x] **T-301: Background message router** (SPEC §6.3, SEC-6)
   - `src/background/router.ts`:
     1. Check the sender (`sender.id === chrome.runtime.id`, and the URL is `https://dev.to/...` or an extension URL).
     2. Validate with `isRequest`.
