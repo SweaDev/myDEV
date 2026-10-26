@@ -36,7 +36,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
 
 ## M0 — Scaffold
 
-- [ ] **T-000: Commit spec documents**
+- [x] **T-000: Commit spec documents**
   - Commit `spec/SPEC-01.md`, `spec/PLAN-01.md` and `spec/TASKS-01.md` as they stand.
   - Done when: `git log` shows the commit and the working tree is clean.
 
