@@ -95,7 +95,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
 
 ## M1 — Core
 
-- [ ] **T-101: Core types** (SPEC §5.1, §6.3–6.5)
+- [x] **T-101: Core types** (SPEC §5.1, §6.3–6.5)
   - In `src/core/types.ts`, define:
     - `FeedKind`, `Route`, `MyDevRecord`, `MyDevRecordInput`,
     - `Meta`, `Settings`, `ErrorCode`,
