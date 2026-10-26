@@ -52,7 +52,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
   - Add a placeholder `src/core/types.ts` so the project compiles.
   - Done when: `pnpm typecheck` passes.
 
-- [ ] **T-003: Lint, format and test tooling**
+- [x] **T-003: Lint, format and test tooling**
   - Add `eslint.config.js` (flat config) with `typescript-eslint` and `eslint-plugin-no-unsanitized` (`property` and `method` set to error).
   - Ban `eval`, `Function`, `innerHTML`, `outerHTML`, `insertAdjacentHTML` and `document.write` with `no-restricted-properties` / `no-restricted-syntax` (SEC-2, SEC-3).
   - Add `.prettierrc` and `vitest.config.ts` (jsdom environment).
