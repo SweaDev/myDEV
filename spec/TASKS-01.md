@@ -201,7 +201,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
   - *Depends on:* T-401. Not required for T-403 to T-405, which use logged-out fixtures and are revisited once this is done.
   > Blocked: needs human — logged-in feed cards are client-rendered, so view-source has none. In DevTools (Elements) on /discover, copy the outerHTML of one `.crayons-story` card (with its Bookmark button), plus the `#homepage-feed` opening tag; ideally also one from /following. Tab bar and routes are already captured from the supplied page source.
 
-- [ ] **T-403: Route parsing and change detection** (SPEC §8.4, FR-8)
+- [x] **T-403: Route parsing and change detection** (SPEC §8.4, FR-8)
   - `src/site/devto/routes.ts`:
     - `parseRoute(url)` → `Route` for every feed in the route table, `#mydev`, and other pages,
     - `onRouteChange(cb)` using `popstate`, `hashchange` and a content-root observer, de-duplicated on route equality.
