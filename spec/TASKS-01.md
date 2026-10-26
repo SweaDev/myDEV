@@ -329,6 +329,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
 - [ ] 👤 **T-703: Fail-safe check** (AC-9)
   - Build with `selectors.ts` broken on purpose. Confirm there is no visible change on dev.to and exactly one console warning, then revert.
   - Done when: the human confirms.
+  > Blocked: needs human — in `src/site/devto/selectors.ts` break `FEED.containers`, `FEED.contentRoot` and `TABS.nav` (e.g. add `-broken` to each selector), run `pnpm build`, reload the extension, open dev.to and check there is no visible change and exactly one console warning ("feed markup was not recognised"); then revert. Breaking only `CARD.root` is a different case: the tab still appears, but no ticks.
 
 - [ ] 👤 **T-704: Performance check** (SPEC §8.3)
   - Scroll to 500+ cards with many IDs in myDEV. Profile the observer callback (< 5 ms per 100 cards), and check there are no long tasks and no leaked observers after route changes.
