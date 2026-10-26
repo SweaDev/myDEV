@@ -89,6 +89,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
 - [ ] 👤 **T-007: Smoke-load the empty extension**
   - Load `dist/chrome` unpacked in Chrome and `dist/firefox` through `about:debugging`.
   - Done when: both load without errors on `https://dev.to/`.
+  > Blocked: needs human — load `dist/chrome` (Chrome) and `dist/firefox` (about:debugging) and confirm no load errors.
 
 ---
 
