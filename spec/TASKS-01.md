@@ -317,7 +317,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
   - Record the results in `spec/SECURITY-REVIEW-01.md`.
   - Done when: all checks are clean, or every finding is fixed.
 
-- [ ] **T-702: README**
+- [x] **T-702: README**
   - Add `README.md` covering:
     - what myDEV does,
     - prerequisites (Node LTS, pnpm via Corepack),
