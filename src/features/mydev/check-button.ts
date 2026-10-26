@@ -79,8 +79,8 @@ export interface CheckButtons {
 }
 
 /**
- * Wires tick buttons into the native feed. One delegated click listener on the feed container
- * handles every button; everything it created is removed when `ctx.signal` aborts.
+ * Wires tick buttons into the native feed. One delegated, capture-phase click listener on the feed
+ * container handles every button; everything it created is removed when `ctx.signal` aborts.
  */
 export function createCheckButtons(ctx: FeatureContext): CheckButtons {
   const { site, store, log, signal } = ctx;
@@ -105,6 +105,9 @@ export function createCheckButtons(ctx: FeatureContext): CheckButtons {
     if (!button || button.hasAttribute('disabled')) return;
     const card = cardOf(button);
     if (!card) return;
+    // dev.to cards are clickable (a click opens the post). This listener runs in the capture phase,
+    // so stopping here keeps our click from reaching the card's own handlers.
+    event.stopPropagation();
 
     setTickBusy(button, true);
     try {
@@ -125,7 +128,7 @@ export function createCheckButtons(ctx: FeatureContext): CheckButtons {
     }
   };
 
-  container?.addEventListener('click', onClick, { signal });
+  container?.addEventListener('click', onClick, { capture: true, signal });
 
   signal.addEventListener(
     'abort',

@@ -46,4 +46,4 @@ No other findings. Nothing in the extension's own code needed fixing as a result
 ## Residual notes (not defects)
 
 - Hiding a native card uses an attribute and CSS; dev.to keeps its own DOM. If dev.to ever reuses a card element for a different post, the filter re-checks it (it stores the post ID in `data-mydev-processed`), but it does not watch attribute changes on cards.
-- The logged-in card markup has not been captured yet (T-402). The URL guard, image allowlist and card parser were verified only against logged-out markup.
+- Logged-in card markup was captured in T-402 (all images seen come from `media2.dev.to`, so the image allowlist is unchanged). Because dev.to cards are clickable, the tick button's click is handled in the capture phase and stopped before it reaches the card.

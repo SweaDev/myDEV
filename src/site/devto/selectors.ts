@@ -10,15 +10,21 @@
  *   - Logged in: tabs Discover (/discover), Following (/following), Curated (/curated),
  *     Latest (/latest) as `a[data-feed-nav]` inside `.feed-pill-nav`, plus a "⋯" dropdown with Top
  *     and other Latest variants. The active tab has only the class
- *     `crayons-navigation__item--current` (no aria-current). `#homepage-feed` is EMPTY in the page
- *     source: cards are rendered client-side (Preact), so logged-in card markup is NOT captured here.
- *     That is T-402.
+ *     `crayons-navigation__item--current` (no aria-current). `#homepage-feed` is empty in the page
+ *     source; once the feed has rendered (client-side) the cards live in `#rendered-article-feed`:
+ *     first-page cards are `<article class="crayons-story">` directly inside it, later pages are
+ *     wrapped in `.paged-stories`. Cards are clickable (`cursor-pointer`) and dev.to navigates on a
+ *     click, so our own clicks must be stopped before they reach the card (check-button.ts).
  * - Tab clicks are soft navigations (history.pushState + a `forem:feed:refresh` event), so route
  *   changes must be detected, not assumed to reload the page.
  * - Post card: `.crayons-story[data-feed-content-id="<digits>"]`; the first one on a page also has
  *   `.crayons-story--featured`. The ID in `data-feed-content-id` equals the numeric part of the
  *   title link id (`article-link-<id>`).
  * - Logged-out cards have NO Bookmark button: `.crayons-story__save` holds only "N min read".
+ *   Logged in, the save area is `<small>N min read</small>` then the Bookmark `<button>`.
+ * - Logged-in differences found in T-402: titles are `h3`; only the featured card shows a cover
+ *   `<img>` (some cards embed a video `<iframe>` instead), so most logged-in snapshots have no cover;
+ *   post URLs on paged stories are site-relative; org posts have two author links (see authorLink).
  * - Every one of the 90 logged-out cards sampled had a cover (`data-preload-image` on the title
  *   link), so a card without a cover is not captured; coverImageUrl stays nullable.
  * - Post images are served from media2.dev.to (see IMAGE_HOSTS in core/url-guard.ts).
@@ -34,16 +40,22 @@ export const CARD = {
   idPattern: /^\d{1,20}$/,
   featuredClass: 'crayons-story--featured',
 
-  /** Title link: href is the absolute post URL; `data-preload-image` is the cover image. */
-  titleLink: 'h2.crayons-story__title a',
+  /**
+   * Title link: `h2` logged out, `h3` logged in. Its href is the post URL (absolute on the first
+   * page, site-relative on paged stories). Logged out, `data-preload-image` is the cover image.
+   */
+  titleLink: '.crayons-story__title a',
   coverAttr: 'data-preload-image',
   /** Featured cards also show the cover as an <img>. */
   coverImage: '.crayons-article__cover img',
 
   authorPic: '.crayons-story__author-pic',
-  /** Avatar link: href is `/<username>`. */
-  authorLink: '.crayons-story__author-pic a[href^="/"]',
-  authorAvatar: '.crayons-story__author-pic img',
+  /**
+   * The author's avatar link, href `/<username>`. Posts published under an organisation put the
+   * organisation's `a.crayons-logo` first, so only `a.crayons-avatar` is the person.
+   */
+  authorLink: '.crayons-story__author-pic a.crayons-avatar[href^="/"]',
+  authorAvatar: '.crayons-story__author-pic a.crayons-avatar img',
   /** Visible author name (the profile-preview button repeats it with extra icons). */
   authorName: '.crayons-story__secondary',
 
@@ -60,13 +72,13 @@ export const CARD = {
 
   /** Row holding reactions and comments, and the save area (read time, and Bookmark when logged in). */
   actionRow: '.crayons-story__bottom',
-  /** The Bookmark button. Not present logged out; logged-in selector to be confirmed in T-402. */
+  /** The Bookmark button (logged in only), inside `.crayons-story__save` after the read time. */
   bookmarkButton: 'button[id^="article-save-button-"], button.bookmark-button',
 } as const;
 
 export const FEED = {
-  /** Logged-in Preact mount point, then the logged-out main column. First match wins. */
-  containers: ['#homepage-feed', '#main-content'],
+  /** Logged-in rendered feed, its empty mount point, then the logged-out main column. First match wins. */
+  containers: ['#rendered-article-feed', '#homepage-feed', '#main-content'],
   /** Main content root watched for client-side navigation. */
   contentRoot: '#main-content',
 } as const;

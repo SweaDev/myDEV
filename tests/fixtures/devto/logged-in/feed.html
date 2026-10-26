@@ -1,0 +1,183 @@
+<!-- Source: logged-in dev.to home page, rendered DOM (see card fixtures). Composed from the trimmed fixtures in this folder. -->
+<main class="articles-list crayons-layout__content" id="main-content" data-follow-button-container="true">
+<div class="js-policy-article-create"><form id="main-status-form"></form></div>
+<header class="p-2 px-3 m:p-0 m:px-0 m:mb-2 fs-l">
+<h1 class="screen-reader-only">Posts</h1>
+<nav class="w-100 flex items-center justify-between mx-0 px-0" aria-label="View posts by">
+  <ul class="flex justify-between items-center w-100 m-0 p-0">
+    <div class="feed-pill-nav">
+      <li>
+        <a
+          data-feed-nav="discover"
+          href="/discover"
+          class="crayons-navigation__item pill-nav-item flex items-center gap-1.5 xl:gap-2 crayons-navigation__item--current"
+        >
+          <svg class="crayons-icon hidden xl:block" width="16" height="16"></svg>
+          <span style="display: grid; place-items: center start">
+            <span aria-hidden="true" style="grid-area: 1/1; visibility: hidden; font-weight: bold"
+              >Discover</span
+            >
+            <span style="grid-area: 1/1">Discover</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a
+          data-feed-nav="following"
+          href="/following"
+          class="crayons-navigation__item pill-nav-item flex items-center gap-1.5 xl:gap-2"
+        >
+          <svg class="crayons-icon hidden xl:block" width="16" height="16"></svg>
+          <span style="display: grid; place-items: center start">
+            <span aria-hidden="true" style="grid-area: 1/1; visibility: hidden; font-weight: bold"
+              >Following</span
+            >
+            <span style="grid-area: 1/1">Following</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a
+          data-feed-nav="curated"
+          href="/curated"
+          class="crayons-navigation__item pill-nav-item flex items-center gap-1.5 xl:gap-2"
+        >
+          <svg
+            class="crayons-icon crayons-icon--default hidden xl:block"
+            width="16"
+            height="16"
+          ></svg>
+          <span style="display: grid; place-items: center start">
+            <span aria-hidden="true" style="grid-area: 1/1; visibility: hidden; font-weight: bold"
+              >Curated</span
+            >
+            <span style="grid-area: 1/1">Curated</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a
+          data-feed-nav="latest"
+          href="/latest"
+          class="crayons-navigation__item pill-nav-item flex items-center gap-1.5 xl:gap-2"
+        >
+          <svg class="crayons-icon hidden xl:block" width="16" height="16"></svg>
+          <span style="display: grid; place-items: center start">
+            <span aria-hidden="true" style="grid-area: 1/1; visibility: hidden; font-weight: bold"
+              >Latest</span
+            >
+            <span style="grid-area: 1/1">Latest</span>
+          </span>
+        </a>
+      </li>
+    </div>
+    <div class="flex gap-1 relative">
+      <li>
+        <button
+          id="feed-dropdown-trigger"
+          aria-controls="feed-dropdown"
+          aria-expanded="false"
+          aria-haspopup="true"
+          class="dropBtn crayons-bb__dropdown crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon"
+          aria-label="Toggle dropdown menu"
+        >
+          <svg class="crayons-icon pointer-events-none" width="24" height="24"></svg>
+        </button>
+      </li>
+      <ul id="feed-dropdown-menu" class="crayons-dropdown feed-dropdown right-0">
+        <li>
+          <a data-text="Week" href="/top/week" class="p-2 crayons-navigation__item"
+            >Top this week</a
+          >
+        </li>
+        <li>
+          <a data-text="Month" href="/top/month" class="p-2 crayons-navigation__item"
+            >Top this month</a
+          >
+        </li>
+        <li>
+          <a data-text="Year" href="/top/year" class="p-2 crayons-navigation__item"
+            >Top this year</a
+          >
+        </li>
+        <li>
+          <a data-text="Infinity" href="/top/infinity" class="p-2 crayons-navigation__item"
+            >Top of all time</a
+          >
+        </li>
+        <hr />
+        <li>
+          <a
+            data-text="Latest (Following only)"
+            href="/following/latest"
+            class="p-2 crayons-navigation__item"
+            >Latest (Following only)</a
+          >
+        </li>
+        <li>
+          <a
+            data-text="Latest (Less filtered)"
+            href="/latest_less_filtered"
+            class="p-2 crayons-navigation__item"
+            >Latest (Less filtered)</a
+          >
+        </li>
+      </ul>
+    </div>
+  </ul>
+</nav>
+
+</header>
+<div id="rendered-article-feed" style=""><article id="featured-story-marker" data-feed-content-id="4911807" data-content-user-id="3743406" class="crayons-story cursor-pointer crayons-story--featured" data-feed-position="1" data-impression-recorded="true"><a href="https://dev.to/dj29/im-not-on-the-dev-team-i-still-debugged-their-missing-badges-from-public-code-and-my-first-test-18oo" aria-labelledby="article-link-4911807" class="crayons-story__hidden-navigation-link">I'm Not on the DEV Team. I Still Debugged Their Missing Badges From Public Code. (And My First Test Was Wrong.)</a><div role="presentation"><div class="crayons-article__cover crayons-article__cover__image__feed" style="aspect-ratio: auto 1000 / 420;"><a href="https://dev.to/dj29/im-not-on-the-dev-team-i-still-debugged-their-missing-badges-from-public-code-and-my-first-test-18oo" title="I'm Not on the DEV Team. I Still Debugged Their Missing Badges From Public Code. (And My First Test Was Wrong.)" class="crayons-article__cover__image__feed crayons-story__cover__image"><img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fu93kz0lmzx5azbphc6x9.png" width="1000" height="420" alt="I'm Not on the DEV Team. I Still Debugged Their Missing Badges From Public Code. (And My First Test Was Wrong.)" class="crayons-article__cover__image__feed"></a></div><div class="crayons-story__body crayons-story__body-full_post"><a href="https://dev.to/dj29/im-not-on-the-dev-team-i-still-debugged-their-missing-badges-from-public-code-and-my-first-test-18oo" class="crayons-article__context-note crayons-article__context-note__feed"><p>A humbling reminder that passing tests can lie</p>
+
+</a><div class="crayons-story__top"><div class="crayons-story__meta"><div class="crayons-story__author-pic"><a href="/dj29" class="crayons-avatar crayons-avatar--l"><img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3743406%2F227d53d3-1443-4ceb-9fb8-98c02ff9e60f.jpg" alt="dj29 profile" loading="lazy" class="crayons-avatar__image"></a></div><div><div><a href="/dj29" class="crayons-story__secondary fw-medium m:hidden">Dhruv Jani</a><div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block"><button id="story-author-preview-trigger-4911807" aria-controls="story-author-preview-content-4911807" aria-label="Dhruv Jani profile details" class="profile-preview-card__trigger fs-s p-1 crayons-btn crayons-btn--ghost -ml-1 -my-2" aria-expanded="false" aria-haspopup="true">Dhruv Jani <img src="https://assets.dev.to/assets/subscription-icon-805dfa7ac7dd660f07ed8d654877270825b07a92a03841aa99a1093bd00431b2.png" alt="Subscriber" class="subscription-icon"></button><div id="story-author-preview-content-4911807" class="profile-preview-card__content crayons-dropdown p-4 pt-0 branded-7"><div class="gap-4 grid"><div class="-mt-4"><a href="/dj29" class="flex"><span class="crayons-avatar crayons-avatar--xl mr-2 shrink-0"><img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3743406%2F227d53d3-1443-4ceb-9fb8-98c02ff9e60f.jpg" alt="" loading="lazy" class="crayons-avatar__image"></span><span class="crayons-link crayons-subtitle-2 mt-5">Dhruv Jani</span></a></div></div></div></div></div><div class="flex items-center"><a href="https://dev.to/dj29/im-not-on-the-dev-team-i-still-debugged-their-missing-badges-from-public-code-and-my-first-test-18oo" class="crayons-story__tertiary fs-xs"><time datetime="2026-10-24T18:12:54Z">Oct 25 (1 day ago)</time></a></div></div></div></div><div class="crayons-story__indention"><h3 class="crayons-story__title crayons-story__title-full_post"><a href="https://dev.to/dj29/im-not-on-the-dev-team-i-still-debugged-their-missing-badges-from-public-code-and-my-first-test-18oo" id="article-link-4911807"><span>I'm Not on the DEV Team. I Still Debugged Their Missing Badges From Public Code. (And My First Test Was Wrong.)</span></a></h3><div class="crayons-story__tags"><a href="/t/opensource" class="crayons-tag"><span class="crayons-tag__prefix">#</span>opensource</a><a href="/t/ruby" class="crayons-tag"><span class="crayons-tag__prefix">#</span>ruby</a><a href="/t/rails" class="crayons-tag"><span class="crayons-tag__prefix">#</span>rails</a><a href="/t/testing" class="crayons-tag"><span class="crayons-tag__prefix">#</span>testing</a></div><div class="crayons-story__bottom"><div class="crayons-story__details"><a href="https://dev.to/dj29/im-not-on-the-dev-team-i-still-debugged-their-missing-badges-from-public-code-and-my-first-test-18oo" data-reaction-count="true" data-reactable-id="4911807" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left"><div class="multiple_reactions_aggregate"><span class="aggregate_reactions_counter"><span title="Number of reactions" class="hidden s:inline">53&nbsp;Reactions</span></span></div></a><a href="https://dev.to/dj29/im-not-on-the-dev-team-i-still-debugged-their-missing-badges-from-public-code-and-my-first-test-18oo#comments" aria-label="Add a comment to post - I'm Not on the DEV Team. I Still Debugged Their Missing Badges From Public Code. (And My First Test Was Wrong.)" class="crayons-btn crayons-btn--ghost crayons-btn--s crayons-btn--icon-left flex items-center"><svg width="24" height="24" class="crayons-icon"></svg><span title="Number of comments">28<span class="hidden s:inline">&nbsp;Comments</span></span></a></div><div class="crayons-story__save"><small class="crayons-story__tertiary mr-2 fs-xs">6 min read</small><button type="button" id="article-save-button-4911807" title="Save post I'm Not on the DEV Team. I Still Debugged Their Missing Badges From Public Code. (And My First Test Was Wrong.) to reading list" aria-label="Save post I'm Not on the DEV Team. I Still Debugged Their Missing Badges From Public Code. (And My First Test Was Wrong.) to reading list" aria-pressed="false" data-initial-feed="true" data-reactable-id="4911807" class="c-btn c-btn--icon-alone"><svg width="24" height="24" aria-hidden="true" focusable="false" class="crayons-icon c-btn__icon"></svg></button></div></div></div></div><div class="crayons-story__comments"><div role="presentation" class="crayons-comment cursor-pointer"><div class="crayons-comment__meta"><a href="/mohsen_jr" class="crayons-story__secondary fw-medium"><span class="crayons-avatar mr-2"><img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F4149631%2F82698589-4d24-4312-a841-92bc88553e6c.jpg" alt="mohsen_jr avatar" class="crayons-avatar__image"></span></a></div><div class="crayons-comment__body"><div class="crayons-comment__metainner"><span class="fw-medium">Mohsen jr</span><a href="/mohsen_jr/comment/3j2eg" class="crayons-story__tertiary ml-1"><time>1 hour ago</time></a></div><div data-testid="comment-content" class="crayons-comment__inner"><p>The allow_multiple_awards: true detail is what makes the regression test meaningful.</p></div></div></div><div class="crayons-story__comments__actions"><a href="https://dev.to/dj29/im-not-on-the-dev-team-i-still-debugged-their-missing-badges-from-public-code-and-my-first-test-18oo#comments-container" data-testid="see-all-comments" class="crayons-btn crayons-btn--ghost crayons-btn--s -ml-2">See all 28 comments</a></div></div></div></article>
+<article id="article-4858037" data-feed-content-id="4858037" data-content-user-id="1436158" class="crayons-story cursor-pointer" data-feed-position="2"><a href="https://dev.to/nyaomaru/is-kit-reached-100-stars-heres-what-changed-since-50-49pf" aria-labelledby="article-link-4858037" class="crayons-story__hidden-navigation-link">is-kit Reached 100 Stars ⭐🎉 Here’s What Changed Since 50</a><div role="presentation"><div class="crayons-story__body crayons-story__body-full_post"><a href="https://dev.to/nyaomaru/is-kit-reached-100-stars-heres-what-changed-since-50-49pf" class="crayons-article__context-note crayons-article__context-note__feed"><p>Covers new APIs, Effect edge cases, and OSS usage</p>
+
+</a><div class="crayons-story__top"><div class="crayons-story__meta"><div class="crayons-story__author-pic"><a href="/nyaomaru" class="crayons-avatar crayons-avatar--l"><img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F1436158%2Fa78bc4ed-7796-4760-baa5-06283c2404d6.png" alt="nyaomaru profile" loading="lazy" class="crayons-avatar__image"></a></div><div><div><a href="/nyaomaru" class="crayons-story__secondary fw-medium m:hidden">nyaomaru</a><div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block"><button id="story-author-preview-trigger-4858037" aria-controls="story-author-preview-content-4858037" aria-label="nyaomaru profile details" class="profile-preview-card__trigger fs-s p-1 crayons-btn crayons-btn--ghost -ml-1 -my-2" aria-expanded="false" aria-haspopup="true">nyaomaru </button></div></div><div class="flex items-center"><a href="https://dev.to/nyaomaru/is-kit-reached-100-stars-heres-what-changed-since-50-49pf" class="crayons-story__tertiary fs-xs"><time datetime="2026-10-21T15:08:25Z">Oct 21 (4 days ago)</time></a></div></div></div></div><div class="crayons-story__indention"><h3 class="crayons-story__title crayons-story__title-full_post"><a href="https://dev.to/nyaomaru/is-kit-reached-100-stars-heres-what-changed-since-50-49pf" id="article-link-4858037"><span>is-kit Reached 100 Stars ⭐🎉 Here’s What Changed Since 50</span></a></h3><div class="crayons-story__tags"><a href="/t/typescript" class="crayons-tag"><span class="crayons-tag__prefix">#</span>typescript</a><a href="/t/opensource" class="crayons-tag"><span class="crayons-tag__prefix">#</span>opensource</a><a href="/t/webdev" class="crayons-tag"><span class="crayons-tag__prefix">#</span>webdev</a><a href="/t/frontend" class="crayons-tag"><span class="crayons-tag__prefix">#</span>frontend</a></div><div class="crayons-story__bottom"><div class="crayons-story__details"><a href="https://dev.to/nyaomaru/is-kit-reached-100-stars-heres-what-changed-since-50-49pf" data-reaction-count="true" data-reactable-id="4858037" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left"><div class="multiple_reactions_aggregate"><span class="aggregate_reactions_counter"><span title="Number of reactions" class="hidden s:inline">119&nbsp;Reactions</span></span></div></a></div><div class="crayons-story__save"><small class="crayons-story__tertiary mr-2 fs-xs">7 min read</small><button type="button" id="article-save-button-4858037" title="Save post is-kit Reached 100 Stars ⭐🎉 Here’s What Changed Since 50 to reading list" aria-label="Save post is-kit Reached 100 Stars ⭐🎉 Here’s What Changed Since 50 to reading list" aria-pressed="false" data-initial-feed="true" data-reactable-id="4858037" class="c-btn c-btn--icon-alone"><svg width="24" height="24" aria-hidden="true" focusable="false" class="crayons-icon c-btn__icon"></svg></button></div></div></div></div></div></article>
+<article id="article-4901412" data-feed-content-id="4901412" data-content-user-id="121966" class="crayons-story cursor-pointer" data-feed-position="6"><a href="https://dev.to/gde/926-steps-two-lobotomies-and-zero-nudges-flight-testing-the-commitment-machine-across-gemini-55ca" aria-labelledby="article-link-4901412" class="crayons-story__hidden-navigation-link">926 Steps, Two Lobotomies, and Zero Nudges: Flight-Testing the Commitment Machine Across Gemini, Claude, and GPT-OSS</a><div role="presentation"><div class="crayons-story__body crayons-story__body-full_post"><div class="crayons-story__top"><div class="crayons-story__meta"><div class="crayons-story__author-pic"><a href="/gde" class="crayons-logo crayons-logo--l"><img alt="Google Developer Experts logo" src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Forganization%2Fprofile_image%2F11939%2Fe3080d5b-ecde-42a8-b089-bafecc31fa97.png" loading="lazy" class="crayons-logo__image"></a><a href="/randalschwartz" class="crayons-avatar crayons-avatar--s absolute -right-2 -bottom-2 border-solid border-2 border-base-inverted"><img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F121966%2Fa587f86d-abcb-484e-9a8a-09213b6a54b3.jpg" alt="randalschwartz profile" loading="lazy" class="crayons-avatar__image"></a></div><div><div><a href="/randalschwartz" class="crayons-story__secondary fw-medium m:hidden">Randal L. Schwartz</a><div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block"><button id="story-author-preview-trigger-4901412" aria-controls="story-author-preview-content-4901412" aria-label="Randal L. Schwartz profile details" class="profile-preview-card__trigger fs-s p-1 crayons-btn crayons-btn--ghost -ml-1 -my-2" aria-expanded="false" aria-haspopup="true">Randal L. Schwartz </button></div><span><span class="crayons-story__tertiary fw-normal"> for </span><a href="/gde" class="crayons-story__secondary fw-medium">Google Developer Experts</a></span></div><div class="flex items-center"><a href="https://dev.to/gde/926-steps-two-lobotomies-and-zero-nudges-flight-testing-the-commitment-machine-across-gemini-55ca" class="crayons-story__tertiary fs-xs"><time datetime="2026-10-22T23:51:30Z">Oct 23 (3 days ago)</time></a></div></div></div></div><div class="crayons-story__indention"><h3 class="crayons-story__title crayons-story__title-full_post"><a href="https://dev.to/gde/926-steps-two-lobotomies-and-zero-nudges-flight-testing-the-commitment-machine-across-gemini-55ca" id="article-link-4901412"><span>926 Steps, Two Lobotomies, and Zero Nudges: Flight-Testing the Commitment Machine Across Gemini, Claude, and GPT-OSS</span></a></h3><div class="crayons-story__tags"><a href="/t/ai" class="crayons-tag"><span class="crayons-tag__prefix">#</span>ai</a><a href="/t/programming" class="crayons-tag"><span class="crayons-tag__prefix">#</span>programming</a><a href="/t/architecture" class="crayons-tag"><span class="crayons-tag__prefix">#</span>architecture</a><a href="/t/unix" class="crayons-tag"><span class="crayons-tag__prefix">#</span>unix</a></div><div class="crayons-story__bottom"><div class="crayons-story__save"><small class="crayons-story__tertiary mr-2 fs-xs">17 min read</small><button type="button" id="article-save-button-4901412" aria-pressed="false" data-initial-feed="true" data-reactable-id="4901412" class="c-btn c-btn--icon-alone"><svg width="24" height="24" aria-hidden="true" focusable="false" class="crayons-icon c-btn__icon"></svg></button></div></div></div></div></div></article>
+<article id="article-4904556" data-feed-content-id="4904556" data-content-user-id="1163149" class="crayons-story cursor-pointer" data-feed-position="11"><a href="https://dev.to/sarvar_04/i-let-an-open-model-delete-1242-of-my-saved-articles-on-purpose-i-feel-lighter-l7f" aria-labelledby="article-link-4904556" class="crayons-story__hidden-navigation-link">I let an open model delete 1,242 of my saved articles. On purpose. I feel lighter.</a><div role="presentation"><div class="crayons-article__cover crayons-article__cover__image__feed" style="width: 100%; aspect-ratio: 16 / 9; position: relative;"><iframe src="https://www.youtube.com/embed/e4b7YdLK7iI" allowfullscreen="true" title="I let an open model delete 1,242 of my saved articles. On purpose. I feel lighter." style="border: 0px; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;"></iframe></div><div class="crayons-story__body crayons-story__body-full_post"><div class="crayons-story__top"><div class="crayons-story__meta"><div class="crayons-story__author-pic"><a href="/sarvar_04" class="crayons-avatar crayons-avatar--l"><img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F1163149%2F5786d6f1-a0b7-46bb-ae3d-7ce0ff849e30.jpg" alt="sarvar_04 profile" loading="lazy" class="crayons-avatar__image"></a></div><div><div><a href="/sarvar_04" class="crayons-story__secondary fw-medium m:hidden">Sarvar Nadaf</a></div><div class="flex items-center"><a href="https://dev.to/sarvar_04/i-let-an-open-model-delete-1242-of-my-saved-articles-on-purpose-i-feel-lighter-l7f" class="crayons-story__tertiary fs-xs"><time datetime="2026-10-23T10:16:38Z">Oct 23 (3 days ago)</time></a></div></div></div></div><div class="crayons-story__indention"><h3 class="crayons-story__title crayons-story__title-full_post"><a href="https://dev.to/sarvar_04/i-let-an-open-model-delete-1242-of-my-saved-articles-on-purpose-i-feel-lighter-l7f" id="article-link-4904556"><span>I let an open model delete 1,242 of my saved articles. On purpose. I feel lighter.</span></a></h3><div class="crayons-story__tags"><a href="/t/devchallenge" class="crayons-tag"><span class="crayons-tag__prefix">#</span>devchallenge</a><a href="/t/ai" class="crayons-tag"><span class="crayons-tag__prefix">#</span>ai</a></div><div class="crayons-story__bottom"><div class="crayons-story__save"><small class="crayons-story__tertiary mr-2 fs-xs">8 min read</small><button type="button" id="article-save-button-4904556" aria-pressed="false" data-initial-feed="true" data-reactable-id="4904556" class="c-btn c-btn--icon-alone"><svg width="24" height="24" aria-hidden="true" focusable="false" class="crayons-icon c-btn__icon"></svg></button></div></div></div></div></div></article>
+<div class="paged-stories"><article class="crayons-story" data-article-path="/rudas/i-was-too-lazy-to-build-an-app-for-every-chore-so-i-built-jackapp-2e09" id="article-4917361" data-feed-content-id="4917361" data-content-user-id="4152296" data-feed-position="19">
+      <a href="/rudas/i-was-too-lazy-to-build-an-app-for-every-chore-so-i-built-jackapp-2e09" aria-labelledby="article-link-4917361" class="crayons-story__hidden-navigation-link">
+        I was too lazy to build an app for every chore. So I built JackApp.
+      </a>
+            <div role="presentation">                    <div class="crayons-story__body crayons-story__body-full_post">            <div class="crayons-story__top">
+      <div class="crayons-story__meta">
+        <div class="crayons-story__author-pic">
+
+          <a href="/rudas" class="crayons-avatar crayons-avatar--l">
+            <img src="https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F4152296%2Fd6eb447f-fce9-4d87-9f3b-c59745bf4fd7.png" alt="rudas profile" class="crayons-avatar__image" loading="lazy">
+          </a>
+        </div>
+        <div>
+          <div>
+            <a href="/rudas" class="crayons-story__secondary fw-medium m:hidden">Rupam Das</a>
+    <div class="profile-preview-card relative mb-4 s:mb-0 fw-medium hidden m:inline-block"><button id="story-author-preview-trigger-4917361" aria-controls="story-author-preview-content-4917361" class="profile-preview-card__trigger fs-s crayons-btn crayons-btn--ghost p-1 -ml-1 -my-2" aria-label="profile details" aria-expanded="false" aria-haspopup="true">Rupam Das</button>
+    </div>
+
+          </div>
+          <a href="/rudas/i-was-too-lazy-to-build-an-app-for-every-chore-so-i-built-jackapp-2e09" class="crayons-story__tertiary fs-xs"><time datetime="2026-10-26T06:50:00Z" data-localized="true">Oct 26 <span class="time-ago-indicator">(6 hours ago)</span></time></a>
+        </div>
+      </div>
+
+            </div>            <div class="crayons-story__indention">
+              <h3 class="crayons-story__title crayons-story__title-full_post">
+                <a href="/rudas/i-was-too-lazy-to-build-an-app-for-every-chore-so-i-built-jackapp-2e09" id="article-link-4917361">
+                  I was too lazy to build an app for every chore. So I built JackApp.
+                </a>
+              </h3>              <div class="crayons-story__tags"><a href="/t/devchallenge" class="crayons-tag crayons-tag--monochrome"><span class="crayons-tag__prefix">#</span>devchallenge</a>
+<a href="/t/hf26challenge" class="crayons-tag crayons-tag--monochrome"><span class="crayons-tag__prefix">#</span>hf26challenge</a>
+<a href="/t/gemma" class="crayons-tag crayons-tag--monochrome"><span class="crayons-tag__prefix">#</span>gemma</a>
+<a href="/t/android" class="crayons-tag crayons-tag--monochrome"><span class="crayons-tag__prefix">#</span>android</a>
+</div>                                          <div class="crayons-story__bottom">                <div class="crayons-story__details">
+                  <a href="/rudas/i-was-too-lazy-to-build-an-app-for-every-chore-so-i-built-jackapp-2e09" class="crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon-left" data-reaction-count="" data-reactable-id="4917361"><div class="multiple_reactions_aggregate"><span class="aggregate_reactions_counter"><span class="hidden s:inline">10&nbsp;reactions</span></span></div></a>
+                </div>                <div class="crayons-story__save">                  <small class="crayons-story__tertiary fs-xs mr-2">8 min read</small>
+        <button type="button" id="article-save-button-4917361" class="c-btn c-btn--icon-alone bookmark-button" data-reactable-id="4917361" data-article-author-id="4152296" aria-label="Save post I was too lazy to build an app for every chore. So I built JackApp. to reading list" data-save-initialized="true">
+          <span class="bm-initial crayons-icon c-btn__icon"><svg width="24" height="24" role="presentation"></svg></span>
+          <span class="bm-success crayons-icon c-btn__icon"><svg width="24" height="24" role="presentation"></svg></span>
+        </button>
+
+                </div>              </div>            </div>          </div>        </div>      </article>
+</div></div>
+<div id="followed-podcasts" data-episodes="[]"></div>
+<div class="loading-articles" id="loading-articles" style="display: none;">loading...</div>
+</main>

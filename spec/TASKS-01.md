@@ -194,12 +194,11 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
   - Strip any personal data from the fixtures.
   - Done when: `selectors.ts` and the fixtures are committed with a short summary of findings at the top of `selectors.ts`.
 
-- [ ] 👤 **T-402: Capture logged-in markup**
+- [x] **T-402: Capture logged-in markup**
   - Using a logged-in browser, capture the logged-in feed tabs (expected Discover, Following, Curated, Latest) with their URLs, the Bookmark button and logged-in card differences, and add them to the route table and selectors.
   - Save logged-in fixtures (with personal data removed) to `tests/fixtures/devto/logged-in/`.
   - Done when: the human confirms, or provides HTML that Claude turns into fixtures.
   - *Depends on:* T-401. Not required for T-403 to T-405, which use logged-out fixtures and are revisited once this is done.
-  > Blocked: needs human — logged-in feed cards are client-rendered, so view-source has none. In DevTools (Elements) on /discover, copy the outerHTML of one `.crayons-story` card (with its Bookmark button), plus the `#homepage-feed` opening tag; ideally also one from /following. Tab bar and routes are already captured from the supplied page source.
 
 - [x] **T-403: Route parsing and change detection** (SPEC §8.4, FR-8)
   - `src/site/devto/routes.ts`:
@@ -339,7 +338,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
 - [ ] 👤 **T-705: Manual end-to-end pass** (AC-1..AC-11)
   - Run the PLAN-01 §3 manual checklist in current stable Chrome and Firefox, logged in and logged out, in light and dark themes.
   - Done when: every acceptance criterion passes, and any failure is logged as a new task below.
-  > Blocked: needs human — manual pass of PLAN-01 §3 in Chrome and Firefox, logged in and out, light and dark. Logged-in cards are client-rendered and not yet captured (T-402), so logged-in behaviour (Bookmark button position, card parsing) is the part most likely to need fixes.
+  > Blocked: needs human — manual pass of PLAN-01 §3 in Chrome and Firefox, logged in and out, light and dark. Logged-in markup is now captured (T-402) and covered by unit tests, but only a real logged-in browser can confirm the tick placement, the click handling next to dev.to's own card clicks, and the myDEV view.
 
 - [ ] **T-706: Release build**
   - Bump the version to `0.1.0` in `manifests/base.json` and `package.json`.
