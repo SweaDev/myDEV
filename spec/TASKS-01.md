@@ -140,7 +140,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
 
 ## M2 — Storage
 
-- [ ] **T-201: Storage schema** (SPEC §5.2)
+- [x] **T-201: Storage schema** (SPEC §5.2)
   - `src/storage/schema.ts`: key builders (`itemKey(postId)`, `ITEM_PREFIX`, `META_KEY`, `SETTINGS_KEY`), `CURRENT_SCHEMA_VERSION = 1`, `DEFAULT_SETTINGS`.
   - Done when: typecheck passes.
 
