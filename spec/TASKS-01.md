@@ -116,7 +116,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
   - Tests cover each field's valid and invalid cases.
   - Done when: tests pass.
 
-- [ ] **T-104: Safe DOM builder** (SEC-3)
+- [x] **T-104: Safe DOM builder** (SEC-3)
   - `src/core/dom.ts`:
     - `el(tag, opts)` with an allowlisted attribute setter. `href` and `src` accept only values returned by the URL guard; use a branded type.
     - `text` sets `textContent`.
