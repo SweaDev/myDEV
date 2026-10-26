@@ -40,7 +40,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
   - Commit `spec/SPEC-01.md`, `spec/PLAN-01.md` and `spec/TASKS-01.md` as they stand.
   - Done when: `git log` shows the commit and the working tree is clean.
 
-- [ ] **T-001: Initialise the pnpm project**
+- [x] **T-001: Initialise the pnpm project**
   - Create `package.json` with `name: "mydev"`, `private: true`, `type: "module"`, `packageManager: "pnpm@<current 10.x>"` and `engines.node` (current LTS).
   - Add `.gitignore` (`node_modules/`, `dist/`, `coverage/`, `*.zip`), `.editorconfig` and `.nvmrc`.
   - Install the dev dependencies from PLAN-01 M0 with `pnpm add -D`, and commit `pnpm-lock.yaml`.
