@@ -278,7 +278,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
   - Tests: render order; snapshot fields shown; empty state; uncheck flow; hostile record values render inert; cleanup restores the native feed.
   - Done when: tests pass.
 
-- [ ] **T-507: myDEV feature module wiring** (SPEC §6.5–6.6)
+- [x] **T-507: myDEV feature module wiring** (SPEC §6.5–6.6)
   - `src/features/mydev/index.ts` exports `myDevFeature: FeatureModule`:
     - `id: "mydev"`, with `matches` limited to home native-feed routes and `#mydev`,
     - `init` composes the filter, button, tab and view,
