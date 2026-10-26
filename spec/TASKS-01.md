@@ -213,7 +213,7 @@ Legend: 👤 needs the human · *Depends on* lists the tasks that must be done f
   - Tests against each fixture with snapshot assertions; a card missing a required field gives `null`; hostile attribute values are dropped.
   - Done when: tests pass.
 
-- [ ] **T-405: SiteAdapter implementation** (SPEC §6.4, FR-9)
+- [x] **T-405: SiteAdapter implementation** (SPEC §6.4, FR-9)
   - `src/site/devto/adapter.ts` implements the `SiteAdapter` interface: `findFeedContainer`, `findTabBar`, `isPostCard`, `getPostId`, `findActionAnchor`, `parseCard`, `hideCard`/`unhideCard` (attribute-based) and route methods.
   - It never throws, and returns `null` on any miss.
   - Tests: ads give `isPostCard === false`; a fixture with the selectors broken gives `null` everywhere without throwing.

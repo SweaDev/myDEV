@@ -80,6 +80,8 @@ export interface SiteAdapter {
   onRouteChange(cb: (route: Route) => void): Unsubscribe;
   findFeedContainer(): Element | null;
   findTabBar(): Element | null;
+  /** Post cards inside `root`, including `root` itself when it is one. */
+  findPostCards(root: ParentNode): Element[];
   isPostCard(el: Element): boolean;
   getPostId(card: Element): string | null;
   /** Where the tick button goes: right after Bookmark, or the end of the action row. */
